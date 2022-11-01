@@ -1,11 +1,11 @@
+// ignore_for_file: avoid_unnecessary_containers
+
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 
-main() => runApp(const Expenses());
+main() => runApp(const ExpensesAPP());
 
-class Expenses extends StatelessWidget {
-  const Expenses({Key? key}) : super(key: key);
+class ExpensesAPP extends StatelessWidget {
+  const ExpensesAPP({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -27,9 +27,21 @@ class MyHomePage extends StatelessWidget {
         centerTitle: true,
         backgroundColor: Colors.deepPurple,
       ),
-      body: const Center(
-        child: Text('Versão Inicial'),
+      body: Column(
+        children: <Widget>[
+          // ignore: sized_box_for_whitespace
+          Container(
+            width: double.infinity,
+            child: const Card(
+              child: Text('Gráfico'),
+            ),
+          ),
+          const Card(
+            child: Text('Lista de Transações'),
+          )
+        ],
       ),
+      // ignore: dead_code
     );
   }
 }
