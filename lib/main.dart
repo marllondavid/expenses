@@ -25,19 +25,27 @@ class MyHomePage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Despesas Pessoais'),
         centerTitle: true,
-        backgroundColor: Colors.deepPurple,
+        backgroundColor: Colors.blue,
       ),
       body: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
           // ignore: sized_box_for_whitespace
           Container(
             width: double.infinity,
             child: const Card(
+              color: Colors.blue,
+              elevation: 5,
               child: Text('Gráfico'),
             ),
           ),
-          const Card(
-            child: Text('Lista de Transações'),
+          // ignore: sized_box_for_whitespace
+          Container(
+            width: double.infinity,
+            child: const Card(
+              child: Text('Lista de Transações'),
+            ),
           )
         ],
       ),

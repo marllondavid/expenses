@@ -16,4 +16,4 @@ For help getting started with Flutter development, view the
 samples, guidance on mobile development, and a full API reference.
 
 
-Fazendo uma diferenciação e implantação a cada dia que vai se evoluindo!
+Fazendo uma diferenciação e implantação a cada dia que vai se evoluindo! +++
