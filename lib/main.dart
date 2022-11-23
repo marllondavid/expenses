@@ -1,6 +1,7 @@
-// ignore_for_file: avoid_unnecessary_containers
-
+// ignore_for_file: avoid_unnecessary_containers, sized_box_for_whitespace, duplicate_ignore
+import 'package:expenses/models/transaction.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 main() => runApp(const ExpensesAPP());
 
@@ -9,7 +10,7 @@ class ExpensesAPP extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: MyHomePage(),
     );
@@ -17,7 +18,12 @@ class ExpensesAPP extends StatelessWidget {
 }
 
 class MyHomePage extends StatelessWidget {
-  const MyHomePage({Key? key}) : super(key: key);
+  final _transactions = [
+    Transaction(
+        id: 't1', title: 'Tenis Nike', value: 300.76, date: DateTime.now()),
+    Transaction(
+        id: 't2', title: 'Conta de Luz', value: 215.78, date: DateTime.now()),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -25,26 +31,96 @@ class MyHomePage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Despesas Pessoais'),
         centerTitle: true,
-        backgroundColor: Colors.blue,
+        backgroundColor: Colors.blueAccent,
       ),
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
-          // ignore: sized_box_for_whitespace
           Container(
             width: double.infinity,
             child: const Card(
-              color: Colors.blue,
+              color: Colors.lightBlue,
               elevation: 5,
               child: Text('Gráfico'),
             ),
           ),
           // ignore: sized_box_for_whitespace
-          Container(
-            width: double.infinity,
-            child: const Card(
-              child: Text('Lista de Transações'),
+          Column(
+            children: _transactions.map((tr) {
+              return Card(
+                  child: Row(
+                children: <Widget>[
+                  Container(
+                    margin: const EdgeInsets.symmetric(
+                      horizontal: 15,
+                      vertical: 10,
+                    ),
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        color: Colors.purple,
+                        width: 2,
+                      ),
+                    ),
+                    padding: const EdgeInsets.all(10),
+                    child: Text(
+                      //toStringAsFixed(2) usado para padronizar o número de casas decimais
+                      'R\$ ${tr.value.toStringAsFixed(2)}',
+                      style: const TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20,
+                        color: Colors.purple,
+                      ),
+                    ),
+                  ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Text(
+                        tr.title,
+                        style: const TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 16,
+                        ),
+                      ),
+                      Text(
+                        DateFormat('d MMM y').format(tr.date),
+                        style: const TextStyle(
+                          color: Colors.grey,
+                        ),
+                      ),
+                    ],
+                  )
+                ],
+              ));
+            }).toList(),
+          ),
+          Card(
+            elevation: 5,
+            child: Padding(
+              padding: const EdgeInsets.all(10),
+              child: Column(
+                children: [
+                  const TextField(
+                    decoration: InputDecoration(
+                      labelText: 'Título',
+                    ),
+                  ),
+                  const TextField(
+                    decoration: InputDecoration(
+                      labelText: 'Valor (R\$)',
+                    ),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      ElevatedButton(
+                        onPressed: () {},
+                        child: const Text('Nova Transação'),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
             ),
           )
         ],
