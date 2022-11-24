@@ -1,16 +1,14 @@
 // ignore_for_file: avoid_unnecessary_containers, sized_box_for_whitespace, duplicate_ignore
-import 'package:expenses/models/transaction.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
+import 'components/transaction_user.dart';
 
 main() => runApp(const ExpensesAPP());
 
 class ExpensesAPP extends StatelessWidget {
   const ExpensesAPP({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
       home: MyHomePage(),
     );
@@ -18,13 +16,7 @@ class ExpensesAPP extends StatelessWidget {
 }
 
 class MyHomePage extends StatelessWidget {
-  final _transactions = [
-    Transaction(
-        id: 't1', title: 'Tenis Nike', value: 300.76, date: DateTime.now()),
-    Transaction(
-        id: 't2', title: 'Conta de Luz', value: 215.78, date: DateTime.now()),
-  ];
-
+  const MyHomePage({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,88 +36,9 @@ class MyHomePage extends StatelessWidget {
               child: Text('Gráfico'),
             ),
           ),
-          // ignore: sized_box_for_whitespace
-          Column(
-            children: _transactions.map((tr) {
-              return Card(
-                  child: Row(
-                children: <Widget>[
-                  Container(
-                    margin: const EdgeInsets.symmetric(
-                      horizontal: 15,
-                      vertical: 10,
-                    ),
-                    decoration: BoxDecoration(
-                      border: Border.all(
-                        color: Colors.purple,
-                        width: 2,
-                      ),
-                    ),
-                    padding: const EdgeInsets.all(10),
-                    child: Text(
-                      //toStringAsFixed(2) usado para padronizar o número de casas decimais
-                      'R\$ ${tr.value.toStringAsFixed(2)}',
-                      style: const TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20,
-                        color: Colors.purple,
-                      ),
-                    ),
-                  ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Text(
-                        tr.title,
-                        style: const TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 16,
-                        ),
-                      ),
-                      Text(
-                        DateFormat('d MMM y').format(tr.date),
-                        style: const TextStyle(
-                          color: Colors.grey,
-                        ),
-                      ),
-                    ],
-                  )
-                ],
-              ));
-            }).toList(),
-          ),
-          Card(
-            elevation: 5,
-            child: Padding(
-              padding: const EdgeInsets.all(10),
-              child: Column(
-                children: [
-                  const TextField(
-                    decoration: InputDecoration(
-                      labelText: 'Título',
-                    ),
-                  ),
-                  const TextField(
-                    decoration: InputDecoration(
-                      labelText: 'Valor (R\$)',
-                    ),
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      ElevatedButton(
-                        onPressed: () {},
-                        child: const Text('Nova Transação'),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ),
-          )
+          const TransactionUser(),
         ],
       ),
-      // ignore: dead_code
     );
   }
 }
