@@ -21,9 +21,14 @@ class MyHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Despesas Pessoais'),
+        title: const Text(
+          'Despesas Pessoais',
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+          ),
+        ),
         centerTitle: true,
-        backgroundColor: Colors.blueAccent,
+        backgroundColor: Colors.black,
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -31,7 +36,6 @@ class MyHomePage extends StatelessWidget {
           Container(
             width: double.infinity,
             child: const Card(
-              color: Colors.lightBlue,
               elevation: 5,
               child: Text('Gráfico'),
             ),
