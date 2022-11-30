@@ -1,4 +1,4 @@
-// ignore_for_file: avoid_unnecessary_containers, sized_box_for_whitespace, duplicate_ignore
+// ignore_for_file: avoid_unnecessary_containers, sized_box_for_whitespace, duplicate_ignore, deprecated_member_use
 import 'package:flutter/material.dart';
 import 'dart:math';
 import 'components/transaction_form.dart';
@@ -18,6 +18,16 @@ class ExpensesAPP extends StatelessWidget {
         colorScheme: ColorScheme.fromSwatch(
           primarySwatch: Colors.brown,
         ).copyWith(secondary: Colors.amber),
+        // fontFamily: 'Quicksand',
+        // appBarTheme: AppBarTheme(
+        //   textTheme: ThemeData.light().textTheme.copyWith(
+        //     headline6: const TextStyle(
+        //       fontFamily: 'OpenSans',
+        //       fontSize: 20,
+        //       fontWeight: FontWeight.bold,
+        //     ),
+        //   ),
+        //  ),
       ),
     );
   }
@@ -31,19 +41,19 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final _transactions = [
-    Transaction(
-      id: 't1',
-      title: 'Tenis Adidas',
-      value: 300.76,
-      date: DateTime.now(),
-    ),
-    Transaction(
-      id: 't2',
-      title: 'Conta de Luz',
-      value: 215.78,
-      date: DateTime.now(),
-    ),
+  final List<Transaction> _transactions = [
+    // Transaction(
+    //   id: 't1',
+    //   title: 'Tenis Adidas',
+    //   value: 300.76,
+    //   date: DateTime.now(),
+    // ),
+    // Transaction(
+    //   id: 't2',
+    //   title: 'Conta de Luz',
+    //   value: 215.78,
+    //   date: DateTime.now(),
+    // ),
   ];
 
   _addTransaction(String title, double value) {
@@ -95,6 +105,7 @@ class _MyHomePageState extends State<MyHomePage> {
             Container(
               width: double.infinity,
               child: const Card(
+                color: Colors.amberAccent,
                 elevation: 5,
                 child: Text('Gráfico'),
               ),
