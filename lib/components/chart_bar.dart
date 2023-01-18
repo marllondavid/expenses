@@ -15,8 +15,12 @@ class ChartBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(children: <Widget>[
-      FittedBox(
-        child: Text('${value.toStringAsFixed(2)},'),
+      // ignore: sized_box_for_whitespace
+      Container(
+        height: 20,
+        child: FittedBox(
+          child: Text('${value.toStringAsFixed(2)},'),
+        ),
       ),
       const SizedBox(height: 5),
       // ignore: sized_box_for_whitespace
