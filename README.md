@@ -1,9 +1,8 @@
 # Projeto de despesas 
 
-Novo Projeto tomando por base no custo de Flutter do Leonardo Moura
+Primeiro projeto em Flutter, baseado na aula de Leonardo Moura.
 
+Este projeto conta com um gráfico que mostra exatamente quanto foi gasto no período de sete dias da semana.
 
-"90% do sucesso se baseia em insistir"
-"Os outros 10% não desista!"
-“Nove pessoas não podem fazer um bebê em um mês.”
-"Insista sempre!"
+Podendo colocar datas anteriores ao dia de cadastro da nova transação ou a data atual.
+
